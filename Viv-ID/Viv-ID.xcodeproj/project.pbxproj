@@ -12,6 +12,9 @@
 		CB239FD822A77CAA00A2C4E9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB239FD622A77CAA00A2C4E9 /* Main.storyboard */; };
 		CB239FDA22A77CAC00A2C4E9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CB239FD922A77CAC00A2C4E9 /* Assets.xcassets */; };
 		CB239FDD22A77CAC00A2C4E9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB239FDB22A77CAC00A2C4E9 /* LaunchScreen.storyboard */; };
+		CB239FE622A77F7300A2C4E9 /* Resnet50.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = CB239FE522A77F7300A2C4E9 /* Resnet50.mlmodel */; };
+		CBCAA82022AF9F11001626B4 /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBCAA81F22AF9F11001626B4 /* HomeController.swift */; };
+		CBCAA82222AF9F22001626B4 /* HomeViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBCAA82122AF9F22001626B4 /* HomeViews.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +25,9 @@
 		CB239FD922A77CAC00A2C4E9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CB239FDC22A77CAC00A2C4E9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CB239FDE22A77CAC00A2C4E9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CB239FE522A77F7300A2C4E9 /* Resnet50.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = Resnet50.mlmodel; sourceTree = "<group>"; };
+		CBCAA81F22AF9F11001626B4 /* HomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
+		CBCAA82122AF9F22001626B4 /* HomeViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViews.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,14 +60,26 @@
 		CB239FD122A77CAA00A2C4E9 /* Viv-ID */ = {
 			isa = PBXGroup;
 			children = (
+				CB239FE422A77F7000A2C4E9 /* Models */,
 				CB239FD222A77CAA00A2C4E9 /* AppDelegate.swift */,
 				CB239FD422A77CAA00A2C4E9 /* ViewController.swift */,
 				CB239FD622A77CAA00A2C4E9 /* Main.storyboard */,
 				CB239FD922A77CAC00A2C4E9 /* Assets.xcassets */,
 				CB239FDB22A77CAC00A2C4E9 /* LaunchScreen.storyboard */,
 				CB239FDE22A77CAC00A2C4E9 /* Info.plist */,
+				CBCAA81F22AF9F11001626B4 /* HomeController.swift */,
+				CBCAA82122AF9F22001626B4 /* HomeViews.swift */,
 			);
 			path = "Viv-ID";
+			sourceTree = "<group>";
+		};
+		CB239FE422A77F7000A2C4E9 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				CB239FE522A77F7300A2C4E9 /* Resnet50.mlmodel */,
+			);
+			name = Models;
+			path = "New Group";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -136,6 +154,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				CB239FD522A77CAA00A2C4E9 /* ViewController.swift in Sources */,
+				CB239FE622A77F7300A2C4E9 /* Resnet50.mlmodel in Sources */,
+				CBCAA82222AF9F22001626B4 /* HomeViews.swift in Sources */,
+				CBCAA82022AF9F11001626B4 /* HomeController.swift in Sources */,
 				CB239FD322A77CAA00A2C4E9 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
