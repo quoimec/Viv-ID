@@ -114,28 +114,42 @@ class ButtonView: UIView {
 
 class CameraView: UIView {
 
+	let topIcon = UIImageView()
 	let topOverlay = UIView()
 	let bottomOverlay = UIView()
-	let middleView = UIView()
+	let middleView = UIImageView()
 	let cameraLayer = UIView()
 	
 	init() {
 		super.init(frame: CGRect.zero)
 	
-		topOverlay.backgroundColor = UIColor.black
-		bottomOverlay.backgroundColor = UIColor.black
-		topOverlay.alpha = 0.5
-		bottomOverlay.alpha = 0.5
+		topOverlay.backgroundColor = UIColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 0.5)
+		bottomOverlay.backgroundColor = UIColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 0.5)
 		
+		middleView.clipsToBounds = true
+		middleView.contentMode = .scaleAspectFill
+		
+		topIcon.translatesAutoresizingMaskIntoConstraints = false
 		cameraLayer.translatesAutoresizingMaskIntoConstraints = false
 		middleView.translatesAutoresizingMaskIntoConstraints = false
 		topOverlay.translatesAutoresizingMaskIntoConstraints = false
 		bottomOverlay.translatesAutoresizingMaskIntoConstraints = false
 		
+		topOverlay.addSubview(topIcon)
 		self.addSubview(cameraLayer)
 		self.addSubview(middleView)
 		self.addSubview(topOverlay)
 		self.addSubview(bottomOverlay)
+		
+		topOverlay.addConstraints([
+		
+			// Top Icon
+			NSLayoutConstraint(item: topIcon, attribute: .leading, relatedBy: .equal, toItem: topOverlay, attribute: .leading, multiplier: 1.0, constant: 20),
+			NSLayoutConstraint(item: topOverlay, attribute: .bottom, relatedBy: .equal, toItem: topIcon, attribute: .bottom, multiplier: 1.0, constant: 12),
+			NSLayoutConstraint(item: topIcon, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 24),
+			NSLayoutConstraint(item: topIcon, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 24)
+		
+		])
 		
 		self.addConstraints([
 		
@@ -169,6 +183,22 @@ class CameraView: UIView {
 	
 	required init?(coder aDecoder: NSCoder) {
 		fatalError("init(coder:) has not been implemented")
+	}
+	
+	func setImage(passedImage: UIImage) {
+		
+		middleView.image = passedImage
+		topOverlay.backgroundColor = UIColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 1.0)
+		bottomOverlay.backgroundColor = UIColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 1.0)
+	
+	}
+	
+	func unsetImage() {
+	
+		middleView.image = nil
+		topOverlay.backgroundColor = UIColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 0.5)
+		bottomOverlay.backgroundColor = UIColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 0.5)
+		
 	}
 	
 }

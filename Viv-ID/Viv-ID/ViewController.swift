@@ -13,7 +13,7 @@ import AVFoundation
 
 class ViewController: UIViewController {
 
-	let RNClassifier = try! VNCoreMLModel(for: Resnet50().model)
+	let RNClassifier = try! VNCoreMLModel(for: CW_Vivid_1().model)
 
 	var rootLayer: CALayer! = nil
 	private var previewLayer: AVCaptureVideoPreviewLayer! = nil
