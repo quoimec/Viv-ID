@@ -8,36 +8,36 @@
 
 /* Begin PBXBuildFile section */
 		CB239FD322A77CAA00A2C4E9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB239FD222A77CAA00A2C4E9 /* AppDelegate.swift */; };
-		CB239FD522A77CAA00A2C4E9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB239FD422A77CAA00A2C4E9 /* ViewController.swift */; };
 		CB239FDA22A77CAC00A2C4E9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CB239FD922A77CAC00A2C4E9 /* Assets.xcassets */; };
 		CB239FDD22A77CAC00A2C4E9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB239FDB22A77CAC00A2C4E9 /* LaunchScreen.storyboard */; };
-		CB70D52122B5EFFE003C6693 /* CS-Vivid.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = CB70D52022B5EFFD003C6693 /* CS-Vivid.mlmodel */; };
-		CB70D52322B5F119003C6693 /* CW-Vivid2.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = CB70D52222B5F119003C6693 /* CW-Vivid2.mlmodel */; };
-		CB70D52522B5F28A003C6693 /* MM-Vivid2.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = CB70D52422B5F28A003C6693 /* MM-Vivid2.mlmodel */; };
 		CB70D52722B6067C003C6693 /* CaptureResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB70D52622B6067C003C6693 /* CaptureResults.swift */; };
+		CB70D52922B6EBAD003C6693 /* WebController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB70D52822B6EBAD003C6693 /* WebController.swift */; };
+		CB70D52B22B6F0E3003C6693 /* WebViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB70D52A22B6F0E3003C6693 /* WebViews.swift */; };
+		CB70D52D22B73670003C6693 /* CW_Micro_Vivid.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = CB70D52C22B73670003C6693 /* CW_Micro_Vivid.mlmodel */; };
+		CB70D52F22B73738003C6693 /* CS_Vivid.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = CB70D52E22B73737003C6693 /* CS_Vivid.mlmodel */; };
+		CB70D53122B73747003C6693 /* MM_Vivid.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = CB70D53022B73747003C6693 /* MM_Vivid.mlmodel */; };
+		CB70D53322B737DF003C6693 /* CW_Mini_Vivid.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = CB70D53222B737DF003C6693 /* CW_Mini_Vivid.mlmodel */; };
 		CBCAA82022AF9F11001626B4 /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBCAA81F22AF9F11001626B4 /* HomeController.swift */; };
 		CBCAA82222AF9F22001626B4 /* HomeViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBCAA82122AF9F22001626B4 /* HomeViews.swift */; };
-		CBE641A522B478AB001BFE48 /* MM-Vivid.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = CBE641A422B478AB001BFE48 /* MM-Vivid.mlmodel */; };
 		CBE641A722B4A9C6001BFE48 /* ModelTester.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE641A622B4A9C6001BFE48 /* ModelTester.swift */; };
-		CBE641A922B4C618001BFE48 /* CW-Vivid.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = CBE641A822B4C618001BFE48 /* CW-Vivid.mlmodel */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		CB239FCF22A77CAA00A2C4E9 /* Viv-ID.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Viv-ID.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB239FD222A77CAA00A2C4E9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		CB239FD422A77CAA00A2C4E9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		CB239FD922A77CAC00A2C4E9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CB239FDC22A77CAC00A2C4E9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CB239FDE22A77CAC00A2C4E9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CB70D52022B5EFFD003C6693 /* CS-Vivid.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = "CS-Vivid.mlmodel"; sourceTree = "<group>"; };
-		CB70D52222B5F119003C6693 /* CW-Vivid2.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = "CW-Vivid2.mlmodel"; sourceTree = "<group>"; };
-		CB70D52422B5F28A003C6693 /* MM-Vivid2.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = "MM-Vivid2.mlmodel"; sourceTree = "<group>"; };
 		CB70D52622B6067C003C6693 /* CaptureResults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptureResults.swift; sourceTree = "<group>"; };
+		CB70D52822B6EBAD003C6693 /* WebController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebController.swift; sourceTree = "<group>"; };
+		CB70D52A22B6F0E3003C6693 /* WebViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViews.swift; sourceTree = "<group>"; };
+		CB70D52C22B73670003C6693 /* CW_Micro_Vivid.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = CW_Micro_Vivid.mlmodel; sourceTree = "<group>"; };
+		CB70D52E22B73737003C6693 /* CS_Vivid.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = CS_Vivid.mlmodel; sourceTree = "<group>"; };
+		CB70D53022B73747003C6693 /* MM_Vivid.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = MM_Vivid.mlmodel; sourceTree = "<group>"; };
+		CB70D53222B737DF003C6693 /* CW_Mini_Vivid.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = CW_Mini_Vivid.mlmodel; sourceTree = "<group>"; };
 		CBCAA81F22AF9F11001626B4 /* HomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
 		CBCAA82122AF9F22001626B4 /* HomeViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViews.swift; sourceTree = "<group>"; };
-		CBE641A422B478AB001BFE48 /* MM-Vivid.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = "MM-Vivid.mlmodel"; sourceTree = "<group>"; };
 		CBE641A622B4A9C6001BFE48 /* ModelTester.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelTester.swift; sourceTree = "<group>"; };
-		CBE641A822B4C618001BFE48 /* CW-Vivid.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = "CW-Vivid.mlmodel"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,7 +72,6 @@
 			children = (
 				CB239FE422A77F7000A2C4E9 /* Models */,
 				CB239FD222A77CAA00A2C4E9 /* AppDelegate.swift */,
-				CB239FD422A77CAA00A2C4E9 /* ViewController.swift */,
 				CB239FD922A77CAC00A2C4E9 /* Assets.xcassets */,
 				CB239FDB22A77CAC00A2C4E9 /* LaunchScreen.storyboard */,
 				CB239FDE22A77CAC00A2C4E9 /* Info.plist */,
@@ -80,6 +79,8 @@
 				CBCAA82122AF9F22001626B4 /* HomeViews.swift */,
 				CBE641A622B4A9C6001BFE48 /* ModelTester.swift */,
 				CB70D52622B6067C003C6693 /* CaptureResults.swift */,
+				CB70D52822B6EBAD003C6693 /* WebController.swift */,
+				CB70D52A22B6F0E3003C6693 /* WebViews.swift */,
 			);
 			path = "Viv-ID";
 			sourceTree = "<group>";
@@ -87,11 +88,10 @@
 		CB239FE422A77F7000A2C4E9 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				CB70D52022B5EFFD003C6693 /* CS-Vivid.mlmodel */,
-				CBE641A822B4C618001BFE48 /* CW-Vivid.mlmodel */,
-				CB70D52222B5F119003C6693 /* CW-Vivid2.mlmodel */,
-				CBE641A422B478AB001BFE48 /* MM-Vivid.mlmodel */,
-				CB70D52422B5F28A003C6693 /* MM-Vivid2.mlmodel */,
+				CB70D52E22B73737003C6693 /* CS_Vivid.mlmodel */,
+				CB70D52C22B73670003C6693 /* CW_Micro_Vivid.mlmodel */,
+				CB70D53222B737DF003C6693 /* CW_Mini_Vivid.mlmodel */,
+				CB70D53022B73747003C6693 /* MM_Vivid.mlmodel */,
 			);
 			name = Models;
 			path = "New Group";
@@ -168,15 +168,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				CB70D52722B6067C003C6693 /* CaptureResults.swift in Sources */,
-				CB239FD522A77CAA00A2C4E9 /* ViewController.swift in Sources */,
-				CBE641A522B478AB001BFE48 /* MM-Vivid.mlmodel in Sources */,
-				CBE641A922B4C618001BFE48 /* CW-Vivid.mlmodel in Sources */,
 				CBCAA82222AF9F22001626B4 /* HomeViews.swift in Sources */,
+				CB70D52B22B6F0E3003C6693 /* WebViews.swift in Sources */,
+				CB70D53322B737DF003C6693 /* CW_Mini_Vivid.mlmodel in Sources */,
 				CBCAA82022AF9F11001626B4 /* HomeController.swift in Sources */,
-				CB70D52322B5F119003C6693 /* CW-Vivid2.mlmodel in Sources */,
-				CB70D52122B5EFFE003C6693 /* CS-Vivid.mlmodel in Sources */,
+				CB70D52922B6EBAD003C6693 /* WebController.swift in Sources */,
 				CBE641A722B4A9C6001BFE48 /* ModelTester.swift in Sources */,
-				CB70D52522B5F28A003C6693 /* MM-Vivid2.mlmodel in Sources */,
+				CB70D52F22B73738003C6693 /* CS_Vivid.mlmodel in Sources */,
+				CB70D53122B73747003C6693 /* MM_Vivid.mlmodel in Sources */,
+				CB70D52D22B73670003C6693 /* CW_Micro_Vivid.mlmodel in Sources */,
 				CB239FD322A77CAA00A2C4E9 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

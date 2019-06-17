@@ -39,12 +39,6 @@ struct LiveResults {
 	
 	}
 	
-	func thresholdMet() -> Bool {
-	
-		return classIdentified() != nil
-	
-	}
-	
 	func classIdentified() -> String? {
 	
 		if liveCount < minimumCount { return nil }
@@ -96,11 +90,13 @@ struct LiveResults {
 	func dumpClasses() {
 	
 		print("")
+		print("-------")
 	
 		for (eachKey, eachValue) in liveResults {
-			print("\(eachKey): \((eachValue / liveCount) * 100)")
+			print("\(eachKey): \((eachValue / liveCount) * 100)%")
 		}
 		
+		print("-------")
 		print("")
 	
 	}

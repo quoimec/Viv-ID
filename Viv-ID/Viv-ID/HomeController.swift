@@ -16,11 +16,17 @@ import SafariServices
 
 class HomeController: UIViewController {
 
+	let classOverride: String? = nil
+
 	let homeView = HomeView()
 	let cameraView = CameraView()
 	
 	var liveRequests = Array<VNRequest>()
 	var uploadRequests = Array<VNRequest>()
+	
+	var audioImpaired = false
+	var audioPlayer = AVPlayer()
+	let audioSpeech = AVSpeechSynthesizer()
 	
 	var liveCapture = false
 	var liveResults = LiveResults(minimumCount: 10, historySeconds: 5, accuracyThreshold: 0.5)
@@ -28,6 +34,9 @@ class HomeController: UIViewController {
 	var bufferSize: CGSize = .zero
 	let captureSession = AVCaptureSession()
 	let captureOutput = AVCaptureVideoDataOutput()
+	
+	let impactGenerator = UIImpactFeedbackGenerator(style: .medium)
+	let notificationGenerator = UINotificationFeedbackGenerator()
 	
 	private let captureQueue = DispatchQueue(label: "VideoOutput", qos: .userInitiated, attributes: [], autoreleaseFrequency: .workItem)
 	
@@ -71,6 +80,7 @@ class HomeController: UIViewController {
 		
 		homeView.captureButton.addGestureRecognizer(capturePressed)
 		homeView.uploadButton.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(initiateUpload)))
+		cameraView.audioIcon.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(updateAudio)))
 		
 	}
 	
@@ -133,12 +143,12 @@ extension HomeController {
 
 	func configureModels() {
 	
-		guard let liveModel = try? VNCoreMLModel(for: CS_Vivid_1().model) else {
+		guard let liveModel = try? VNCoreMLModel(for: CS_Vivid().model) else {
 			print("Unable to load Live Model")
 			return
 		}
 		
-		guard let uploadModel = try? VNCoreMLModel(for: MM_Vivid2_1().model) else {
+		guard let uploadModel = try? VNCoreMLModel(for: MM_Vivid().model) else {
 			print("Unable to load Upload Model")
 			return
 		}
@@ -155,12 +165,26 @@ extension HomeController {
 			
 			DispatchQueue.main.async {
 
-				if safe.liveResults.thresholdMet() {
+				if let identifiedClass = safe.liveResults.classIdentified() {
+					
+					if safe.cameraView.topLabel.text == "" && safe.audioImpaired {
+					
+						safe.audioSpeech.stopSpeaking(at: .immediate)
+						let speechUtterance = AVSpeechUtterance(string: "I see \(identifiedClass)")
+						safe.audioSpeech.speak(speechUtterance)
+					
+					}
+					
 					safe.cameraView.topIcon.image = UIImage(named: "Check")
+					safe.cameraView.topLabel.text = safe.classOverride != nil ? safe.classOverride : identifiedClass
+					
+					
+					
 				} else {
 					safe.cameraView.topIcon.image = UIImage(named: "Waiting")
+					safe.cameraView.topLabel.text = ""
 				}
-
+				
 			}
 			
 		})
@@ -174,6 +198,7 @@ extension HomeController {
 			DispatchQueue.main.async {
 
 				safe.cameraView.topIcon.image = UIImage(named: "Check")
+				safe.cameraView.topLabel.text = safe.classOverride != nil ? safe.classOverride : classificationResults[0].identifier
 				safe.presentPrediction(passedClass: classificationResults[0].identifier)
 				
 			}
@@ -241,9 +266,9 @@ extension HomeController {
 
 	func presentPrediction(passedClass: String) {
 	
-		print("Present Class: \(passedClass)")
-	
-		let urlLookup: Dictionary<String, URL> = [
+		let useClass = classOverride != nil ? classOverride! : passedClass
+		
+		let pageURL: Dictionary<String, URL> = [
 			"Marine Turtles": URL(string: "https://www.vividsydney.com/event/light/marine-turtle")!,
 			"Opera House Close": URL(string: "https://www.vividsydney.com/event/light/austral-flora-ballet")!,
 			"Opera House Far": URL(string: "https://www.vividsydney.com/event/light/austral-flora-ballet")!,
@@ -257,15 +282,44 @@ extension HomeController {
 			"Harmony": URL(string: "https://www.vividsydney.com/event/light/harmony")!,
 			"Triangulum": URL(string: "https://www.vividsydney.com/event/light/triangulum")!
 		]
-
-		guard let urlReference = urlLookup[passedClass] else {
-			print("Unable to find URL for class: \(passedClass)")
-			return
+		
+		let audioURL: Dictionary<String, URL> = [
+			"Dancing Grass": URL(string: "https://www.vividsydney.com/sites/default/files/2019-05/Map%2041%20Dancing%20Grass.mp3")!,
+			"Marine Turtles": URL(string: "https://www.vividsydney.com/sites/default/files/2019-05/Map%2019%20Marine%20Turtle.mp3")!,
+			"Customs House": URL(string: "https://www.vividsydney.com/sites/default/files/2019-05/Map%2020%20Under%20the%20Harbour_Customs%20House.mp3")!,
+			"Regal Peacock": URL(string: "https://www.vividsydney.com/sites/default/files/2019-05/Map%2001%20Regal%20Peacock.mp3")!,
+			"Jungle Boogie": URL(string: "https://www.vividsydney.com/sites/default/files/2019-05/Map%2034%20Jungle%20Boogie.mp3")!,
+			"Bin Chickens": URL(string: "https://www.vividsydney.com/sites/default/files/2019-05/Map%2022%20Bin%20Chickens.mp3")!,
+			"KA3323": URL(string: "https://www.vividsydney.com/sites/default/files/2019-05/Map%2030%20KA3323.mp3")!,
+			"Electric Playground": URL(string: "https://www.vividsydney.com/sites/default/files/2019-05/Samsung%20Electric%20Playground_updated.mp3")!,
+			"Harmony": URL(string: "https://www.vividsydney.com/sites/default/files/2019-05/Map%2035%20Harmony.mp3")!,
+			"Triangulum": URL(string: "https://www.vividsydney.com/sites/default/files/2019-05/Map%2023%20Triangulum.mp3")!
+		]
+		
+		if audioImpaired {
+		
+			guard let urlReference = audioURL[useClass] else {
+				print("Unable to find audio URL for class: \(passedClass)")
+				return
+			}
+			
+			let playerItem = AVPlayerItem(asset: AVAsset(url: urlReference))
+			audioPlayer.replaceCurrentItem(with: playerItem)
+			
+			audioPlayer.play()
+			
+		} else {
+		
+			guard let urlReference = pageURL[useClass] else {
+				print("Unable to find URL for class: \(passedClass)")
+				return
+			}
+			
+			let safariController = SFSafariViewController(url: urlReference)
+			
+			self.present(safariController, animated: true, completion: nil)
+		
 		}
-		
-		let safariController = SFSafariViewController(url: urlReference)
-		
-		self.present(safariController, animated: true, completion: nil)
 		
 	}
 	
@@ -278,20 +332,24 @@ extension HomeController {
 			case .began:
 			liveCapture = true
 			homeView.captureButton.alpha = 0.7
-			AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
+			impactGenerator.impactOccurred()
 			cameraView.topIcon.image = UIImage(named: "Waiting")
+			cameraView.topLabel.text = ""
 			
 			case .ended:
 			liveCapture = false
 			homeView.captureButton.alpha = 1.0
-			AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
 			cameraView.topIcon.image = nil
+			cameraView.topLabel.text = ""
 			
 			guard let identifiedClass = liveResults.classIdentified() else {
 				print("No class identified")
+				liveResults.dumpClasses()
+				notificationGenerator.notificationOccurred(.error)
 				return
 			}
 			
+			notificationGenerator.notificationOccurred(.success)
 			liveResults.resetResults()
 			
 			presentPrediction(passedClass: identifiedClass)
@@ -310,6 +368,21 @@ extension HomeController {
 		photoPicker.sourceType = .photoLibrary
 		
 		self.present(photoPicker, animated: true)
+	
+	}
+
+	@objc func updateAudio() {
+	
+		audioImpaired = !audioImpaired
+		
+		audioPlayer.pause()
+		audioSpeech.stopSpeaking(at: .immediate)
+	
+		if audioImpaired {
+			cameraView.audioIcon.image = UIImage(named: "SoundOn")
+		} else {
+			cameraView.audioIcon.image = UIImage(named: "SoundOff")
+		}
 	
 	}
 

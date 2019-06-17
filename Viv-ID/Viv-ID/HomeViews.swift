@@ -115,6 +115,8 @@ class ButtonView: UIView {
 class CameraView: UIView {
 
 	let topIcon = UIImageView()
+	let audioIcon = UIImageView()
+	let topLabel = UILabel()
 	let topOverlay = UIView()
 	let bottomOverlay = UIView()
 	let middleView = UIImageView()
@@ -123,19 +125,30 @@ class CameraView: UIView {
 	init() {
 		super.init(frame: CGRect.zero)
 	
+		self.backgroundColor = #colorLiteral(red: 0.73, green: 0.90, blue: 0.93, alpha: 1.00)
 		topOverlay.backgroundColor = UIColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 0.5)
 		bottomOverlay.backgroundColor = UIColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 0.5)
+		
+		topLabel.font = UIFont.systemFont(ofSize: 16, weight: .heavy)
+		topLabel.textColor = UIColor.white
 		
 		middleView.clipsToBounds = true
 		middleView.contentMode = .scaleAspectFill
 		
+		audioIcon.isUserInteractionEnabled = true
+		audioIcon.image = UIImage(named: "SoundOff")
+		
 		topIcon.translatesAutoresizingMaskIntoConstraints = false
+		audioIcon.translatesAutoresizingMaskIntoConstraints = false
+		topLabel.translatesAutoresizingMaskIntoConstraints = false
 		cameraLayer.translatesAutoresizingMaskIntoConstraints = false
 		middleView.translatesAutoresizingMaskIntoConstraints = false
 		topOverlay.translatesAutoresizingMaskIntoConstraints = false
 		bottomOverlay.translatesAutoresizingMaskIntoConstraints = false
 		
 		topOverlay.addSubview(topIcon)
+		topOverlay.addSubview(audioIcon)
+		topOverlay.addSubview(topLabel)
 		self.addSubview(cameraLayer)
 		self.addSubview(middleView)
 		self.addSubview(topOverlay)
@@ -144,10 +157,20 @@ class CameraView: UIView {
 		topOverlay.addConstraints([
 		
 			// Top Icon
-			NSLayoutConstraint(item: topIcon, attribute: .leading, relatedBy: .equal, toItem: topOverlay, attribute: .leading, multiplier: 1.0, constant: 20),
-			NSLayoutConstraint(item: topOverlay, attribute: .bottom, relatedBy: .equal, toItem: topIcon, attribute: .bottom, multiplier: 1.0, constant: 12),
-			NSLayoutConstraint(item: topIcon, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 24),
-			NSLayoutConstraint(item: topIcon, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 24)
+			NSLayoutConstraint(item: topIcon, attribute: .leading, relatedBy: .equal, toItem: topOverlay, attribute: .leading, multiplier: 1.0, constant: 24),
+			NSLayoutConstraint(item: topOverlay, attribute: .bottom, relatedBy: .equal, toItem: topIcon, attribute: .bottom, multiplier: 1.0, constant: 24),
+			NSLayoutConstraint(item: topIcon, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 30),
+			NSLayoutConstraint(item: topIcon, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 30),
+			
+			// Audio Icon
+			NSLayoutConstraint(item: topOverlay, attribute: .trailing, relatedBy: .equal, toItem: audioIcon, attribute: .trailing, multiplier: 1.0, constant: 24),
+			NSLayoutConstraint(item: topOverlay, attribute: .bottom, relatedBy: .equal, toItem: audioIcon, attribute: .bottom, multiplier: 1.0, constant: 24),
+			NSLayoutConstraint(item: audioIcon, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 30),
+			NSLayoutConstraint(item: audioIcon, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 30),
+			
+			// Top Label
+			NSLayoutConstraint(item: topLabel, attribute: .leading, relatedBy: .equal, toItem: topIcon, attribute: .trailing, multiplier: 1.0, constant: 12),
+			NSLayoutConstraint(item: topLabel, attribute: .centerY, relatedBy: .equal, toItem: topIcon, attribute: .centerY, multiplier: 1.0, constant: 0)
 		
 		])
 		
